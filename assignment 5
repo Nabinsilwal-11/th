@@ -1,4 +1,154 @@
+1.	WAP in c to input a number and find whether the number is exactly divisible by 5 and 7 or not using function.
+   >No return no argument
+
+>No return with argument
+
+>Return with no argument
+
+>Return with argument
+
+2. WAP in c to input a number and check whether the number is palindrome or not using function.
+#include <stdio.h>
+
+int main()
+{
+    int n, num, rev = 0;
+
+
+    printf("Enter any number to check palindrome: ");
+    scanf("%d", &n);
+
+    num = n; 
+
+    while(n!=0)
+    {
+        rev = (rev * 10) + (n % 10);
+        n = n/10;
+    }
+
+    
+    if(rev==num)
+    {
+        printf("%d is palindrome.", num);
+    }
+    else
+    {
+        printf("%d is not palindrome.", num);
+    }
+
+    return 0;
+}
+
+3.WAP in c to find whether the given number is prime or not using function.
+#include<stdio.h>
+ 
+int check_prime(int);
+ 
+main()
+{
+   int n, result;
+ 
+   printf("Enter an integer to check whether it is prime or not.\n");
+   scanf("%d",&n);
+ 
+   result = check_prime(n);
+ 
+   if ( result == 1 )
+      printf("%d is prime.\n", n);
+   else
+      printf("%d is not prime.\n", n);
+ 
+   return 0;
+}
+ 
+int check_prime(int a)
+{
+   int c;
+ 
+   for ( c = 2 ; c <= a - 1 ; c++ )
+   { 
+      if ( a%c == 0 )
+     return 0;
+   }
+   if ( c == a )
+      return 1;
+}
+
+4. WAP in c to print all prime numbers less than 500 using function.
+#include<stdio.h>
+ 
+int check_prime(int);
+ 
+main()
+{
+   int n, result;
+ 
+   printf("Enter an integer to check whether it is prime or not.\n");
+   scanf("%d",&n);
+ 
+   result = check_prime(n);
+ 
+   if ( result >= 500 )
+      printf("%d is prime.\n", n);
+   else
+      printf("%d is not prime.\n", n);
+ 
+   return 0;
+}
+ 
+int check_prime(int a)
+{
+   int c;
+ 
+   for ( c = 2 ; c <= a - 1 ; c++ )
+   { 
+      if ( a%c == 0 )
+     return 0;
+   }
+   if ( c >= a )
+      return 1;
+}
+
+5. WAP in c to print TWIN PRIME less than 500 using function. [If two consecutive odd numbers are both prime then they are known as twin prime].
+
+
+6. WAP in c to convert decimal number to binary using function.
+#include<stdio.h>
+int main(){
+
+    long int decimalNumber,remainder,quotient;
+
+    int binaryNumber[100],i=1,j;
+    printf("Enter any decimal number: ");
+    scanf("%ld",&decimalNumber);
+       quotient = decimalNumber;
+          while(quotient!=0){
+
+         binaryNumber[i++]= quotient % 2;
+
+         quotient = quotient / 2;
+
+    }
+
+
+    printf("Equivalent binary value of decimal number %d: ",decimalNumber);
+
+    for(j = i -1 ;j> 0;j--)
+
+         printf("%d",binaryNumber[j]);
+
+
+    return 0;
+
+}
+
+7. WAP in c to find all the divisor of a given number using functions
+
+8.  Write a function power that computers X raise to the power Y for integer X and Y and return double type value
+
+
 #ARRAYS and Strings
+
 1.WAP in c to input any 10 numbers in an array and display them using function.(passing individual array element).
 #include<stdio.h>
 #include<conio.h>
@@ -69,3 +219,134 @@ int main()
 	printf("\n");
 	return 0;
 }
+
+
+RECURSION
+
+1.WAP in c to find factorial of a given number using Recursive function.
+
+#include <stdio.h> 
+long int factorial(int i) { 
+	if(i <= 1) {
+		return 1;
+	}
+		
+	else  {
+		printf("%ld ", i* factorial(i - 1));
+		return i * factorial(i - 1); 
+		}
+} 
+int main() { 
+int i = 5; 
+printf("fact(i-1)\n");
+printf("Factorial of %d is %ld\n", i, factorial(i)); 
+return 0; 
+}
+
+2.	Write a recursive function to generate the  Fibonacci series using recursive function.
+
+
+
+
+3.	Write a recursive function to generate the particular term in Fibonacci series.( eg: 8th term:13)
+
+4.	WAP in c to display the reverse number using Recursion.
+#include<stdio.h>
+int main(){
+   int num,reverse_number;
+
+   printf("\nEnter any number:");
+   scanf("%d",&num);
+   reverse_number=reverse_function(num);
+   printf("\nAfter reverse the no is :%d",reverse_number);
+   return 0;
+}
+int sum=0,rem;
+reverse_function(int num){
+   if(num){
+      rem=num%10;
+      sum=sum*10+rem;
+      reverse_function(num/10);
+   }
+   else
+      return sum;
+   return sum;
+}
+
+
+
+5.WAP to find the sum of digits entered by the user.
+
+#include<stdio.h>
+void disp(int[],int);
+int main(void)
+{
+	int arr[5],i;
+	printf("Enter the values");
+	for (i=0;i<5;i++)
+	{
+		scanf("%d",&arr[i]);
+	}
+	disp(arr,5);
+	
+}
+void disp(int ar[],int s){
+	int i,sum=0;
+	printf("Elements are:");
+	for (i=0;i<s;i++)
+	{
+		printf("%d\t",ar[i]);
+		sum=sum+ar[i];
+	}
+	printf("\nTotal=%d\n",sum);
+}
+ 
+
+
+6.WAP to find the sum of Natural number up to 10 using recursion.
+
+#include <stdio.h>
+
+int natural(int n){
+	if(n==0){
+		return 0;
+	}
+	else{
+		return n+natural(n-1);
+
+	}
+}
+
+int main(void){
+	int n;
+	printf("ENTER ANy Number:\t");
+	scanf("%d",&n);
+	printf("The sum of %d natural numbers is %d\n",n,natural(n) );
+}
+ 
+
+
+
+7.WAP in c to ask a number and power to be calculated for that number.
+ 
+#include<stdio.h>
+#include<math.h>
+double power(int,int);
+int main ()
+{
+	int x,y;
+	int a,b;
+	double catch;
+	printf("Enter Two integers:\n");
+	scanf("%d%d",&a,&b);
+	catch= power(a,b);
+	printf("Required ans is %e\n",catch);
+
+}
+double power (int x,int y)
+{
+	double p;
+	p=pow(x,y);
+	return p;
+}
+ 
