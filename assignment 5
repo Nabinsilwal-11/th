@@ -1,11 +1,48 @@
 1.	WAP in c to input a number and find whether the number is exactly divisible by 5 and 7 or not using function.
-   >No return no argument
 
->No return with argument
+   #include <stdio.h>
 
->Return with no argument
+ 
 
->Return with argument
+void main()
+
+{
+
+    int i, num1, num2, rev = 0, sum = 0;
+
+ 
+
+    printf("Enter the value of num1 and num2 \n");
+
+    scanf("%d %d", &num1, &num2);
+
+    printf("Integers divisible by 5 are \n");
+
+    for (i = num1; i < num2; i++)
+
+    {
+
+        if (i % 5 == 0)
+
+        {
+
+            printf("%3d,", i);
+
+            i++;
+
+            sum = sum + i;
+
+        }
+
+    }
+
+    printf("\n Number of integers divisible by 5 between %d and %d =
+
+ %d\n", num1, num2, count);
+
+    printf("Sum of all integers that are divisible by 5 = %d\n", sum);
+
+}
 
 2. WAP in c to input a number and check whether the number is palindrome or not using function.
 #include <stdio.h>
@@ -143,8 +180,46 @@ int main(){
 }
 
 7. WAP in c to find all the divisor of a given number using functions
+    int limit = x;
+    int numberOfDivisors = 0;
+
+    if (x == 1) return 1;
+
+    for (int i = 1; i < limit; ++i) {
+        if (x % i == 0) {
+            limit = x / i;
+            if (limit != i) {
+                numberOfDivisors++;
+            }
+            numberOfDivisors++;
+        }
+    }
+
+    return numberOfDivisors;
+}
 
 8.  Write a function power that computers X raise to the power Y for integer X and Y and return double type value
+#include <stdio.h>
+#include <math.h>
+
+int main(int argc, const char * argv[])
+{
+    /* Define temporary variables */
+    double x, y;
+    double result;
+
+    /* Assign the values we will use for the pow calculation */
+    x = 4;
+    y = 2;
+
+    /* Calculate the result of value1 raised to the power of value2 */
+    result = pow(x, y);
+
+    /* Display the result of the calculation */
+    printf("%f raised to the power of %f is %f\n", x, y, result);
+
+    return 0;
+}
 
 
 #ARRAYS and Strings
@@ -244,11 +319,44 @@ return 0;
 }
 
 2.	Write a recursive function to generate the  Fibonacci series using recursive function.
+ #include<stdio.h>
+
+void printFibonacci(int);
+
+int main(){
+
+    int k,n;
+    long int i=0,j=1,f;
+
+    printf("Enter the range of the Fibonacci series: ");
+    scanf("%d",&n);
+
+    printf("Fibonacci Series: ");
+    printf("%d %d ",0,1);
+    printFibonacci(n);
+
+    return 0;
+}
+
+void printFibonacci(int n){
+
+    static long int first=0,second=1,sum;
+
+    if(n>0){
+         sum = first + second;
+         first = second;
+         second = sum;
+         printf("%ld ",sum);
+         printFibonacci(n-1);
+    }
+
+}
 
 
-
+   
 
 3.	Write a recursive function to generate the particular term in Fibonacci series.( eg: 8th term:13)
+
 
 4.	WAP in c to display the reverse number using Recursion.
 #include<stdio.h>
