@@ -1,21 +1,144 @@
-1.	What is pointer and explain its applications. Write a program that uses pointers to copy an array of double.
+/*
+Write a program to read number of employees,n, working in a company.
+Reserve the memory required to store age of n employees
+using malloc() function. Read age of n employees from user
+and count the number of employees of age above 80 years.
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
 
 
-2.	Write a function that is passed with an array of n pointers which returns the maximum.
+int main(){
+	int n,*age,i,count=0;
+	printf("No. of employees: ");
+	scanf("%d",&n);
+	
+	age = (int *)malloc(n*sizeof(int));
+	
+	printf("\n");
+	
+	for(i=0;i<n;i++){
+		printf("Emp Age: ");
+		scanf("%d",(age+i));
+		
+		if(*(age+i)>80){
+			count++;
+		}
+	}
+	printf("\nNo. of employees of age greater than 80 is %d",count);
+	
+	return 0;
+}
 
-3.	Justify that pointer is jewel in C language. Write a function that is passed an array of n pointers to floats and returns a newly created array that contains those n float values in reverse order. Assume any necessary data.
-4.	Write a function that uses pointers to search for the address of a given integer in a given array. If the given integer is found, the function returns its address; otherwise it returns NULL.
-5.	Write a program that uses pointers to copy an array of integer.
 
-6.	Write a function that is passed an array of n pointer to floats and returns a newly created array that contains those n float values.
-7.	Explain the pointer to structure with example.
 
-8.	Explain the pointer arithmetic with example.
+ A program with a function that is passed with an array of n pointers which returns the maximum. 
+#include<stdio.h>
+ 
+int max(int *parr, int n){
+	int i;
+	for(i=0; i<n; i++){
+		if (*parr < *(parr + i)){
+			*parr = *(parr+i);
+		}
+	}
+	return *parr;
+}
+	
+int main()
+{
+	int n,i,maxo;
+	printf("How many numbers do you want ? :");
+	scanf("%d",&n);
+	
+	int arr[n];
+	
+	printf("Enter %d numbers : \n",n);
+	
+	for (i=0; i<n; i++){
+		scanf("%d",&arr[i]);
+	}
+	
+	maxo = max(arr,n);
+	
+	printf ("The MAXIMUM value is %d",maxo);
+	
+	return 0;
+	
+}
 
-9.	Write a program to sort 'n' numbers in ascending order using dynamic memory.
-10.	What is dynamic memory allocation (DMA)? How can you use it in C?
 
-11.	What are the advantages of dynamic memory allocation over static memory allocation?
-12.	How is malloc() function different from calloc() function?
-13.	Write a program to read number of employees,n, working in a company. Reserve the memory required to store age of n employees using malloc() function. Read age of n employees from user and count the number of employees of age above 80 years.
-14.	Write a program to read a matrix of size m*n entered by the user and display its transpose matrix. Use Dynamic Memory Allocation.
+
+/*a program with function that uses pointers to search for the address of a
+ given integer in a given array. If the given integer is found,
+ the function returns its address; otherwise it returns NULL.
+*/
+#include <stdio.h>
+
+int *search (int *parr , int tar, int n){
+	int i;
+	for ( i=0;i<n;i++){
+		if (*(parr + i) == tar){
+			return (parr + i);
+		}
+	} 
+	return NULL;
+}
+	
+int main(){
+	int i,n,tar;
+	
+	printf("Array Size :");
+	scanf("%d",&n);
+	
+	int arr[n];
+	
+	printf("Enter %d numbers in the array :\n",n);
+	for (i=0;i<n;i++){
+		scanf("%d",&arr[i]);
+	}
+	
+	printf("Whose address do you want ? : ");
+	scanf("%d",&tar);
+	
+	printf("The address of %d is %u.",tar,search(arr,tar,n));
+	
+	return 0;
+}
+
+
+//Write a program to sort 'n' numbers in ascending order using dynamic memory.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+	int n,*p,i,j,swt;
+	printf("How many numbers do you want to enter ?\n---> ");
+	scanf("%d",&n);
+	
+	p = (int *)malloc(n*sizeof(int));
+	
+	printf("Enter numbers :");
+	for (i=0;i<n;i++){
+		scanf("%d",(p+i));
+	}
+	
+	for (i=0;i<n;i++){
+		j=i+1;
+		for(j;j<n;j++){
+			if(*(p+i)>*(p+j)){
+				swt = *(p+i);
+				*(p+i) = *(p+j);
+				*(p+j) = swt;
+			}
+		}
+	}
+	printf("Sorted in ascending order: ");
+	for(i=0;i<n;i++){
+		printf("%d ",*(p+i));
+	}
+	
+	return 0;
+}
